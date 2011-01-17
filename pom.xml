@@ -41,7 +41,7 @@ THE SOFTWARE.
 
   <name>Drop Down ViewsTabBar Plugin</name>
   <description>Provides a drop down menu for selecting views.</description>
-  <url>http://wiki.hudson-ci.org/display/HUDSON/DropDown+TabBar+Plugin</url>
+  <url>http://wiki.hudson-ci.org/display/HUDSON/DropDown+ViewsTabBar+Plugin</url>
 
   <licenses>
     <license>
