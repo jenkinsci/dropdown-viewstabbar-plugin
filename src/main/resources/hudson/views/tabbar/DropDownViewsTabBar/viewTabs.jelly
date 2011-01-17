@@ -1,0 +1,62 @@
+<!--
+The MIT License
+
+Copyright (c) 2011, Jesse Farinacci
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+
+<j:jelly xmlns:j="jelly:core">
+  <script type="text/javascript">
+    function selectViewOnChange()
+    {
+      var selectViewCurrentView = document.getElementById('selectView');
+      if (selectViewCurrentView != null)
+      {
+        /* selectViewCurrentView.value == ${v.url} */
+        var selectViewCurrentViewName = selectViewCurrentView.value;
+        if (selectViewCurrentViewName != null )
+        {
+          if (selectViewCurrentViewName.length > 0)
+          {
+            window.location.href = '${rootURL}/' + selectViewCurrentViewName;
+          }
+        }
+      }
+    }
+  </script>
+  <div style="background-color: #f0f0f0; border: solid 1px #bbb; padding: 0.5em; margin-top: 1em;">
+    <span style="font-weight: bold;">Views: </span>
+    <select id="selectView" onChange="javascript:selectViewOnChange();">
+      <j:forEach var="v" items="${views}">
+        <option id="${v.viewName}" value="${v.url}">${v.viewName}</option>
+      </j:forEach>
+      <j:if test="${currentView.hasPermission(currentView.CREATE)}">
+        <option value="">--------------------------------</option>
+        <option value="${currentView.owner.url}newView">${%New View}</option>
+      </j:if>
+    </select>
+    <script type="text/javascript">
+      /* be nice and put focus on current view */
+      var elementId = '${currentView.viewName}';
+      var selectViewCurrentView = document.getElementById(elementId);
+      if (selectViewCurrentView != null) { selectViewCurrentView.selected = true; }
+    </script>
+  </div>
+</j:jelly>
