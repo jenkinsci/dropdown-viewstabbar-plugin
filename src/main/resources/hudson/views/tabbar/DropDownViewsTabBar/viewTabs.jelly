@@ -42,13 +42,13 @@ THE SOFTWARE.
     }
   </script>
   <div style="background-color: #f0f0f0; border: solid 1px #bbb; padding: 0.5em; margin-top: 1em;">
-    <span style="font-weight: bold;">Views: </span>
+    <span style="font-weight: bold;">${%ViewsTitle}</span>
     <select id="selectView" onChange="javascript:selectViewOnChange();">
-      <j:forEach var="v" items="${views}">
-        <option id="${v.viewName}" value="${v.url}">${v.viewName}</option>
+      <j:forEach var="view" items="${views}">
+        <option id="${view.viewName}" value="${view.url}">${view.viewName}</option>
       </j:forEach>
       <j:if test="${currentView.hasPermission(currentView.CREATE)}">
-        <option value="">--------------------------------</option>
+        <option value="">----------------</option>
         <option value="${currentView.owner.url}newView">${%New View}</option>
       </j:if>
     </select>
