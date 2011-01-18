@@ -30,8 +30,10 @@ import hudson.views.ViewsTabBarDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
- * The Drop Down ViewsTabBar Extension for {@link ViewsTabBar}.
- *
+ * This plugin provides an alternate rendering of the Views bar which runs along
+ * the top of all views. This plugin is useful for instances which have a very
+ * large number of views and want a compact rendering.
+ * 
  * @author <a href="mailto:jieryn@gmail.com">Jesse Farinacci</a>
  * @version $Id$
  * @since 1.393
@@ -50,7 +52,7 @@ public final class DropDownViewsTabBar extends ViewsTabBar
     @Override
     public String getDisplayName()
     {
-      return "Drop Down Views TabBar";
+      return "DropDown ViewsTabBar";
     }
   }
 }
