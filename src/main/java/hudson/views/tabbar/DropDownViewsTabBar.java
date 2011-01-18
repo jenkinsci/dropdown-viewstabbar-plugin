@@ -52,7 +52,7 @@ public final class DropDownViewsTabBar extends ViewsTabBar
     @Override
     public String getDisplayName()
     {
-      return "DropDown ViewsTabBar";
+      return "DropDown ViewsTabBar Plugin";
     }
   }
 }
