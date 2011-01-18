@@ -59,4 +59,32 @@ THE SOFTWARE.
     </developer>
   </developers>
 
+  <scm>
+    <connection>scm:git:git://github.com/hudson/dropdown-viewstabbar-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:hudson/dropdown-viewstabbar-plugin.git</developerConnection>
+    <url>https://github.com/hudson/dropdown-viewstabbar-plugin</url>
+  </scm>
+
+  <!-- get every artifact through maven.glassfish.org, which proxies all the artifacts that we need -->
+  <repositories>
+    <repository>
+      <id>m.g.o-public</id>
+      <url>http://maven.glassfish.org/content/groups/public/</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>m.g.o-public</id>
+      <url>http://maven.glassfish.org/content/groups/public/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <distributionManagement>
+    <repository>
+      <id>java.net-m2-repository</id>
+      <url>http://maven.hudson-labs.org:8081/content/repositories/releases/</url>
+    </repository>
+  </distributionManagement>
+
 </project>
