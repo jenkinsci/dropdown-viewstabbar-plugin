@@ -1,4 +1,3 @@
-
 The MIT License
 
 Copyright (c) 2011, Jesse Farinacci
