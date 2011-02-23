@@ -37,7 +37,7 @@ THE SOFTWARE.
 
   <artifactId>dropdown-viewstabbar-plugin</artifactId>
   <packaging>hpi</packaging>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
 
   <name>Drop Down ViewsTabBar Plugin</name>
   <description>Provides a drop down menu for selecting views.</description>
