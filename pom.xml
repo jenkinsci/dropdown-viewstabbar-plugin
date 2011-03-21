@@ -31,13 +31,12 @@ THE SOFTWARE.
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>1.396</version>
-    <relativePath>../pom.xml</relativePath>
+    <version>1.398</version>
   </parent>
 
   <artifactId>dropdown-viewstabbar-plugin</artifactId>
   <packaging>hpi</packaging>
-  <version>1.2-SNAPSHOT</version>
+  <version>1.1.1-SNAPSHOT</version>
 
   <name>Drop Down ViewsTabBar Plugin</name>
   <description>Provides a drop down menu for selecting views.</description>
@@ -81,10 +80,6 @@ THE SOFTWARE.
   </pluginRepositories>
 
   <distributionManagement>
-    <repository>
-      <id>java.net-m2-repository</id>
-      <url>http://maven.hudson-labs.org:8081/content/repositories/releases/</url>
-    </repository>
     <site>
       <id>github-project-site</id>
       <url>gitsite:git@github.com/jenkinsci/dropdown-viewstabbar-plugin</url>
