@@ -45,7 +45,7 @@ THE SOFTWARE.
     <span style="font-weight: bold;">${%ViewsTitle}</span>
     <select id="selectView" onChange="javascript:selectViewOnChange();">
       <j:forEach var="view" items="${views}">
-        <option id="${view.viewName}" value="${view.viewUrl}">${view.viewName}</option>
+        <option id="${view.viewName}" value="${view.viewUrl}">${view.viewName} (${view.getItems().size()})</option>
       </j:forEach>
       <j:if test="${currentView.hasPermission(currentView.CREATE)}">
         <option value="">----------------</option>
