@@ -27,8 +27,10 @@ package hudson.views.tabbar;
 import hudson.Extension;
 import hudson.views.ViewsTabBar;
 import hudson.views.ViewsTabBarDescriptor;
+import net.sf.json.JSONObject;
 
 import org.kohsuke.stapler.DataBoundConstructor;
+import org.kohsuke.stapler.StaplerRequest;
 
 /**
  * This plugin provides an alternate rendering of the Views bar which runs along
@@ -38,21 +40,46 @@ import org.kohsuke.stapler.DataBoundConstructor;
  * @author <a href="mailto:jieryn@gmail.com">Jesse Farinacci</a>
  * @since 1.0
  */
-public final class DropDownViewsTabBar extends ViewsTabBar
-{
-  @DataBoundConstructor
-  public DropDownViewsTabBar()
-  {
-    super();
-  }
+public final class DropDownViewsTabBar extends ViewsTabBar {
+    @Extension
+    public static class DescriptorImpl extends ViewsTabBarDescriptor {
+	/**
+	 * Whether to show the job count, e.g. the <code>(42)</code> part of
+	 * <code>All (42)</code>, in the drop down label name.
+	 * 
+	 * @since 1.3
+	 */
+	private boolean showJobCount;
 
-  @Extension
-  public static class DescriptorImpl extends ViewsTabBarDescriptor
-  {
-    @Override
-    public String getDisplayName()
-    {
-      return Messages.DisplayName();
+	public DescriptorImpl() {
+	    super();
+	    load();
+	}
+
+	@Override
+	public boolean configure(StaplerRequest request, JSONObject jsonObject) {
+	    showJobCount = jsonObject.getBoolean("showJobCount");
+	    save();
+	    return true;
+	}
+
+	@Override
+	public String getDisplayName() {
+	    return Messages.DisplayName();
+	}
+
+	public boolean isShowJobCount() {
+	    return showJobCount;
+	}
+
+	public void setShowJobCount(boolean showJobCount) {
+	    this.showJobCount = showJobCount;
+	    save();
+	}
     }
-  }
+
+    @DataBoundConstructor
+    public DropDownViewsTabBar() {
+	super();
+    }
 }
