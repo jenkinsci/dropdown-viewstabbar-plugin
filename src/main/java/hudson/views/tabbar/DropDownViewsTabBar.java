@@ -1,7 +1,7 @@
 /*
  * The MIT License
  * 
- * Copyright (c) 2011, Jesse Farinacci
+ * Copyright (c) 2011-2012, Jesse Farinacci
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +25,8 @@
 package hudson.views.tabbar;
 
 import hudson.Extension;
-import hudson.views.ViewsTabBar;
 import hudson.views.ViewsTabBarDescriptor;
+import hudson.views.ViewsTabBar;
 import net.sf.json.JSONObject;
 
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -43,43 +43,44 @@ import org.kohsuke.stapler.StaplerRequest;
 public final class DropDownViewsTabBar extends ViewsTabBar {
     @Extension
     public static class DescriptorImpl extends ViewsTabBarDescriptor {
-	/**
-	 * Whether to show the job count, e.g. the <code>(42)</code> part of
-	 * <code>All (42)</code>, in the drop down label name.
-	 * 
-	 * @since 1.3
-	 */
-	private boolean showJobCount;
+        /**
+         * Whether to show the job count, e.g. the <code>(42)</code> part of
+         * <code>All (42)</code>, in the drop down label name.
+         * 
+         * @since 1.3
+         */
+        private boolean showJobCount;
 
-	public DescriptorImpl() {
-	    super();
-	    load();
-	}
+        public DescriptorImpl() {
+            super();
+            load();
+        }
 
-	@Override
-	public boolean configure(StaplerRequest request, JSONObject jsonObject) {
-	    showJobCount = jsonObject.getBoolean("showJobCount");
-	    save();
-	    return true;
-	}
+        @Override
+        public boolean configure(final StaplerRequest request,
+                final JSONObject jsonObject) {
+            showJobCount = jsonObject.getBoolean("showJobCount");
+            save();
+            return true;
+        }
 
-	@Override
-	public String getDisplayName() {
-	    return Messages.DisplayName();
-	}
+        @Override
+        public String getDisplayName() {
+            return Messages.DisplayName();
+        }
 
-	public boolean isShowJobCount() {
-	    return showJobCount;
-	}
+        public boolean isShowJobCount() {
+            return showJobCount;
+        }
 
-	public void setShowJobCount(boolean showJobCount) {
-	    this.showJobCount = showJobCount;
-	    save();
-	}
+        public void setShowJobCount(final boolean showJobCount) {
+            this.showJobCount = showJobCount;
+            save();
+        }
     }
 
     @DataBoundConstructor
     public DropDownViewsTabBar() {
-	super();
+        super();
     }
 }
