@@ -1,7 +1,7 @@
 <!--
 The MIT License
 
-Copyright (c) 2011-2012, Jesse Farinacci
+Copyright (c) 2011-2012, Jesse Farinacci, Frederic Gurr
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,10 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 
-<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form">
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
   <f:section title="${%DropDown.ViewsTabBar.Section.Title}">
-    <f:entry title="${%DropDown.ViewsTabBar.Section.ShowJobCount.Title}" field="showJobCount">
-      <f:checkbox />
+    <f:entry field="showJobCount">
+      <f:checkbox title="${%DropDown.ViewsTabBar.Section.ShowJobCount.Title}"/>
     </f:entry>
   </f:section>
 </j:jelly>

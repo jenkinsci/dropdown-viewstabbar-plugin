@@ -1,7 +1,7 @@
 /*
  * The MIT License
  * 
- * Copyright (c) 2011-2012, Jesse Farinacci
+ * Copyright (c) 2011-2012, Jesse Farinacci, Frederic Gurr
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,46 +41,31 @@ import org.kohsuke.stapler.StaplerRequest;
  * @since 1.0
  */
 public final class DropDownViewsTabBar extends ViewsTabBar {
+    /**
+     * Whether to show the job count, e.g. the <code>(42)</code> part of
+     * <code>All (42)</code>, in the drop down label name.
+     * 
+     * @since 1.3
+     */
+    final boolean showJobCount;
+
+    @DataBoundConstructor
+    public DropDownViewsTabBar(final boolean showJobCount) {
+        this.showJobCount = showJobCount;
+    }
+
+    public boolean isShowJobCount() {
+        return showJobCount;
+    }
+    
     @Extension
     public static class DescriptorImpl extends ViewsTabBarDescriptor {
-        /**
-         * Whether to show the job count, e.g. the <code>(42)</code> part of
-         * <code>All (42)</code>, in the drop down label name.
-         * 
-         * @since 1.3
-         */
-        private boolean showJobCount;
-
-        public DescriptorImpl() {
-            super();
-            load();
-        }
-
-        @Override
-        public boolean configure(final StaplerRequest request,
-                final JSONObject jsonObject) {
-            showJobCount = jsonObject.getBoolean("showJobCount");
-            save();
-            return true;
-        }
 
         @Override
         public String getDisplayName() {
             return Messages.DisplayName();
         }
-
-        public boolean isShowJobCount() {
-            return showJobCount;
-        }
-
-        public void setShowJobCount(final boolean showJobCount) {
-            this.showJobCount = showJobCount;
-            save();
-        }
     }
 
-    @DataBoundConstructor
-    public DropDownViewsTabBar() {
-        super();
-    }
+    public static final ViewsTabBar INSTANCE = new DropDownViewsTabBar(false);
 }
