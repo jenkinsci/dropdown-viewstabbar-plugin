@@ -1,7 +1,7 @@
 <!--
 The MIT License
 
-Copyright (c) 2011-2012, Jesse Farinacci
+Copyright (c) 2011-2012, Jesse Farinacci, Frederic Gurr
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 
+<?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core">
   <script type="text/javascript">
     function selectViewOnChange()
@@ -46,7 +47,7 @@ THE SOFTWARE.
     <select id="selectView" onChange="javascript:selectViewOnChange();">
       <j:forEach var="view" items="${views}">
         <option id="${view.viewName}" value="${view.viewUrl}">${view.viewName}
-          <j:if test="${it.descriptor.showJobCount}">(${view.getItems().size()})</j:if>
+          <j:if test="${it.showJobCount}">(${view.getItems().size()})</j:if>
         </option>
       </j:forEach>
       <j:if test="${currentView.hasPermission(currentView.CREATE)}">
