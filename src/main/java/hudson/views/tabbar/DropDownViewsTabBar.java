@@ -25,12 +25,10 @@
 package hudson.views.tabbar;
 
 import hudson.Extension;
-import hudson.views.ViewsTabBarDescriptor;
 import hudson.views.ViewsTabBar;
-import net.sf.json.JSONObject;
+import hudson.views.ViewsTabBarDescriptor;
 
-import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.StaplerRequest;
+import javax.inject.Inject;
 
 /**
  * This plugin provides an alternate rendering of the Views bar which runs along
@@ -41,31 +39,18 @@ import org.kohsuke.stapler.StaplerRequest;
  * @since 1.0
  */
 public final class DropDownViewsTabBar extends ViewsTabBar {
-    /**
-     * Whether to show the job count, e.g. the <code>(42)</code> part of
-     * <code>All (42)</code>, in the drop down label name.
-     * 
-     * @since 1.3
-     */
-    final boolean showJobCount;
-
-    @DataBoundConstructor
-    public DropDownViewsTabBar(final boolean showJobCount) {
-        this.showJobCount = showJobCount;
-    }
-
-    public boolean isShowJobCount() {
-        return showJobCount;
-    }
-    
     @Extension
     public static class DescriptorImpl extends ViewsTabBarDescriptor {
-
         @Override
         public String getDisplayName() {
             return Messages.DisplayName();
         }
     }
 
-    public static final ViewsTabBar INSTANCE = new DropDownViewsTabBar(false);
+    @Inject
+    private DropDownGlobalConfiguration dropDownGlobalConfiguration;
+
+    public DropDownGlobalConfiguration getDropDownGlobalConfiguration() {
+        return dropDownGlobalConfiguration;
+    }
 }

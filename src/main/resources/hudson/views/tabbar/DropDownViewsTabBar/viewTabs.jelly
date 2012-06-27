@@ -47,7 +47,7 @@ THE SOFTWARE.
     <select id="selectView" onChange="javascript:selectViewOnChange();">
       <j:forEach var="view" items="${views}">
         <option id="${view.viewName}" value="${view.viewUrl}">${view.viewName}
-          <j:if test="${it.showJobCount}">(${view.getItems().size()})</j:if>
+          <j:if test="${it.dropDownGlobalConfiguration.showJobCount}">(${view.getItems().size()})</j:if>
         </option>
       </j:forEach>
       <j:if test="${currentView.hasPermission(currentView.CREATE)}">
