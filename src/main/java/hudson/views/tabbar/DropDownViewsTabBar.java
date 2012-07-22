@@ -30,6 +30,8 @@ import hudson.views.ViewsTabBarDescriptor;
 
 import javax.inject.Inject;
 
+import org.kohsuke.stapler.DataBoundConstructor;
+
 /**
  * This plugin provides an alternate rendering of the Views bar which runs along
  * the top of all views. This plugin is useful for instances which have a very
@@ -45,6 +47,11 @@ public final class DropDownViewsTabBar extends ViewsTabBar {
         public String getDisplayName() {
             return Messages.DisplayName();
         }
+    }
+
+    @DataBoundConstructor
+    public DropDownViewsTabBar() {
+        super();
     }
 
     @Inject
