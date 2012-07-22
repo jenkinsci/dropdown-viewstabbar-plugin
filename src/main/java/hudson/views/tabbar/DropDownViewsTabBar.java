@@ -49,13 +49,13 @@ public final class DropDownViewsTabBar extends ViewsTabBar {
         }
     }
 
+    @Inject
+    private DropDownGlobalConfiguration dropDownGlobalConfiguration;
+
     @DataBoundConstructor
     public DropDownViewsTabBar() {
         super();
     }
-
-    @Inject
-    private DropDownGlobalConfiguration dropDownGlobalConfiguration;
 
     public DropDownGlobalConfiguration getDropDownGlobalConfiguration() {
         return dropDownGlobalConfiguration;
