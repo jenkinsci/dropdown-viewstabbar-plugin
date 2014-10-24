@@ -45,10 +45,26 @@ THE SOFTWARE.
   <div style="background-color: #f0f0f0; border: solid 1px #bbb; padding: 0.5em; margin-top: 1em;">
     <span style="font-weight: bold;">${%ViewsTitle}</span>
     <select id="selectView" onChange="javascript:selectViewOnChange();">
-      <j:forEach var="view" items="${views}">
-        <option id="${view.viewName}" value="${view.viewUrl}">${view.viewName}
-          <j:if test="${it.dropDownGlobalConfiguration.showJobCount}">(${view.getItems().size()})</j:if>
-        </option>
+      <j:forEach var="view" items="${views}">     
+        <j:choose>
+          <j:when test="${currentView.hasPermission(app.ADMINISTER)}">
+      	    <option id="${view.viewName}" value="${view.viewUrl}">${view.viewName}
+              <j:if test="${it.showJobCount}">(${view.getItems().size()})</j:if>
+            </option>
+      	  </j:when>
+      	  <j:when test="${it.filterViews}">
+      	    <j:if test="${view.getItems().size() &gt; 0}">
+      	      <option id="${view.viewName}" value="${view.viewUrl}">${view.viewName}
+                <j:if test="${it.showJobCount}">(${view.getItems().size()})</j:if>
+              </option>
+      	    </j:if>
+      	  </j:when>
+      	  <j:otherwise>
+      	    <option id="${view.viewName}" value="${view.viewUrl}">${view.viewName}
+              <j:if test="${it.showJobCount}">(${view.getItems().size()})</j:if>
+            </option>
+      	  </j:otherwise>
+      	</j:choose>
       </j:forEach>
       <j:if test="${currentView.hasPermission(currentView.CREATE)}">
         <option value="">----------------</option>
