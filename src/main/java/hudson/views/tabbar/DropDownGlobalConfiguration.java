@@ -45,27 +45,33 @@ public final class DropDownGlobalConfiguration extends GlobalConfiguration {
      * <code>All (42)</code>, in the drop down label name.
      */
     public static final boolean DEFAULT_SHOW_JOB_COUNT = true;
+    public static final boolean DEFAULT_FILTER_VIEWS = false;
 
     /**
      * Whether to show the job count, e.g. the <code>(42)</code> part of
      * <code>All (42)</code>, in the drop down label name.
      */
     private boolean             showJobCount;
+    private boolean				filterViews;
 
     public DropDownGlobalConfiguration() {
-        this(DEFAULT_SHOW_JOB_COUNT);
+        this(DEFAULT_SHOW_JOB_COUNT, DEFAULT_FILTER_VIEWS);
     }
 
     @DataBoundConstructor
-    public DropDownGlobalConfiguration(final boolean showJobCount) {
+    public DropDownGlobalConfiguration(final boolean showJobCount, final boolean filterViews) {
         super();
         this.showJobCount = showJobCount;
+        this.filterViews = filterViews;
+        load();
     }
 
     @Override
     public boolean configure(final StaplerRequest request, final JSONObject json)
             throws FormException {
-        request.bindJSON(this, json);
+//        request.bindJSON(this, json);
+        this.showJobCount = json.getBoolean("showJobCount");
+        this.filterViews = json.getBoolean("filterViews");
         save();
         return true;
     }
@@ -76,6 +82,10 @@ public final class DropDownGlobalConfiguration extends GlobalConfiguration {
     }
 
     public boolean isShowJobCount() {
-        return showJobCount;
+        return this.showJobCount;
+    }
+    
+    public boolean isFilterViews() {
+        return this.filterViews;
     }
 }
