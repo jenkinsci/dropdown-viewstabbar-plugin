@@ -31,7 +31,7 @@ import hudson.views.ViewsTabBarDescriptor;
 import javax.inject.Inject;
 
 import org.kohsuke.stapler.DataBoundConstructor;
-
+import jenkins.model.GlobalConfiguration;
 /**
  * This plugin provides an alternate rendering of the Views bar which runs along
  * the top of all views. This plugin is useful for instances which have a very
@@ -55,9 +55,21 @@ public final class DropDownViewsTabBar extends ViewsTabBar {
     @DataBoundConstructor
     public DropDownViewsTabBar() {
         super();
+        this.dropDownGlobalConfiguration = new DropDownGlobalConfiguration();
     }
 
     public DropDownGlobalConfiguration getDropDownGlobalConfiguration() {
         return dropDownGlobalConfiguration;
+    }
+
+    
+    public boolean isFilterViews() {
+    	return GlobalConfiguration.all().get(DropDownGlobalConfiguration.class).isFilterViews();
+//        return dropDownGlobalConfiguration.isFilterViews();
+    }
+    
+    public boolean isShowJobCount() {
+    	return GlobalConfiguration.all().get(DropDownGlobalConfiguration.class).isShowJobCount();
+//        return dropDownGlobalConfiguration.isFilterViews();
     }
 }
