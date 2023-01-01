@@ -45,7 +45,7 @@ public final class DropDownViewsTabBar extends ViewsTabBar {
     public static class DescriptorImpl extends ViewsTabBarDescriptor {
         @Override
         public String getDisplayName() {
-            return Messages.DisplayName();
+            return Messages.DropDownViewsTabBar_DisplayName();
         }
     }
 
@@ -64,12 +64,12 @@ public final class DropDownViewsTabBar extends ViewsTabBar {
 
     
     public boolean isFilterViews() {
-    	return GlobalConfiguration.all().get(DropDownGlobalConfiguration.class).isFilterViews();
-//        return dropDownGlobalConfiguration.isFilterViews();
+        final DropDownGlobalConfiguration configuration = GlobalConfiguration.all().get(DropDownGlobalConfiguration.class);
+        return configuration != null && configuration.isFilterViews();
     }
     
     public boolean isShowJobCount() {
-    	return GlobalConfiguration.all().get(DropDownGlobalConfiguration.class).isShowJobCount();
-//        return dropDownGlobalConfiguration.isFilterViews();
+        final DropDownGlobalConfiguration configuration = GlobalConfiguration.all().get(DropDownGlobalConfiguration.class);
+        return configuration != null && configuration.isShowJobCount();
     }
 }
