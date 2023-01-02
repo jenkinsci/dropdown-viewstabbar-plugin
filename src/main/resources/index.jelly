@@ -22,10 +22,11 @@
   THE SOFTWARE.
 -->
 
+<?jelly escape-by-default='true'?>
 <div>
   <span>
     The
-    <a href="http://wiki.jenkins-ci.org/display/JENKINS/DropDown+ViewsTabBar+Plugin">Drop Down ViewsTabBar Plugin</a>
+    <a href="https://plugins.jenkins.io/dropdown-viewstabbar-plugin/">Drop Down ViewsTabBar Plugin</a>
     provides an alternate rendering of the Views bar which runs along
     the top of all views. This plugin is useful for instances which have a very
     large number of views and want a compact rendering.

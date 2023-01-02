@@ -78,7 +78,7 @@ public final class DropDownGlobalConfiguration extends GlobalConfiguration {
 
     @Override
     public String getDisplayName() {
-        return Messages.DisplayName();
+        return Messages.DropDownViewsTabBar_DisplayName();
     }
 
     public boolean isShowJobCount() {
